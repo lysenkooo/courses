@@ -29,5 +29,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :enrollments, dependent: :destroy
-  has_many :users, through: :memberships
 end

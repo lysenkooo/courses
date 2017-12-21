@@ -10,9 +10,9 @@
 #
 
 class Course < ApplicationRecord
-  has_many :users, through: :enrollments
   has_many :lessons, dependent: :destroy
   has_many :enrollments, dependent: :destroy
+  has_many :users, through: :enrollments
 
   def enrollment(user)
     enrollments.find_by(user: user)

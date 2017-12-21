@@ -9,6 +9,13 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= link_to 'My Courses', courses_path %> |
+      Hello, <%= current_user.email %>
+
+      <hr>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

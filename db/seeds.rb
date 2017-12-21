@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-User.destroy_all
-User.create!(email: 'd@lysenkooo.ru', password: '123456')
+User.find_or_create_by!(email: 'd@lysenkooo.ru').update(password: '123456')
 
+Lesson.destroy_all
 Course.destroy_all
+
 course = Course.create!(
   name: 'Test Course',
   description: 'Created for test purposes'
@@ -17,18 +18,47 @@ course = Course.create!(
 
 Lesson.create!(
   course: course,
+  position: 1,
   name: 'Foreword',
   body: 'First Lesson'
 )
 
 Lesson.create!(
   course: course,
+  position: 2,
   name: 'Main Idea',
   body: 'Second Lesson'
 )
 
 Lesson.create!(
   course: course,
+  position: 3,
+  name: 'Congratulations!',
+  body: 'Last Lesson'
+)
+
+course = Course.create!(
+  name: 'Second Course',
+  description: 'Created for test purposes'
+)
+
+Lesson.create!(
+  course: course,
+  position: 1,
+  name: 'Introduction',
+  body: 'First Lesson'
+)
+
+Lesson.create!(
+  course: course,
+  position: 2,
+  name: 'Main Idea',
+  body: 'Second Lesson'
+)
+
+Lesson.create!(
+  course: course,
+  position: 3,
   name: 'Congratulations!',
   body: 'Last Lesson'
 )

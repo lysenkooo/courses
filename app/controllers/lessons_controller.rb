@@ -1,10 +1,11 @@
 class LessonsController < ApplicationController
+  before_action :set_course, only: [:index, :show]
   before_action :set_lesson, only: [:show]
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all
+    @lessons = @course.lessons
   end
 
   # GET /lessons/1
@@ -22,5 +23,9 @@ class LessonsController < ApplicationController
 
   def set_lesson
     @lesson = Lesson.find(params[:id])
+  end
+
+  def set_course
+    @course = current_user.courses.find(params[:course_id])
   end
 end

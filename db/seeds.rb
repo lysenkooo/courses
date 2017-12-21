@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
-User.find_or_create_by!(email: 'd@lysenkooo.ru').update(password: '123456')
+user = User.find_or_create_by!(email: 'd@lysenkooo.ru')
+user.update(password: '123456')
 
 Lesson.destroy_all
 Course.destroy_all
@@ -62,3 +63,6 @@ Lesson.create!(
   name: 'Congratulations!',
   body: 'Last Lesson'
 )
+
+user.courses << course
+user.save!
